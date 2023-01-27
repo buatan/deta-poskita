@@ -1,0 +1,115 @@
+{
+  "name": "deta-poskita",
+  "description": "Aplikasi POS sederhana dengan Deta",
+  "runtime": "nodejs14",
+  "env": [
+    {
+      "key": "DETA_KEY",
+      "description": "Deta project key, you can get it from the Deta dashboard",
+      "value": "",
+      "required": true
+    },
+    {
+      "key": "DATABASE_HOST",
+      "description": "Database MySQL host, if you're using MySQL",
+      "value": "",
+      "required": false
+    },
+    {
+      "key": "DATABASE_PORT",
+      "description": "Database MySQL port, if you're using MySQL",
+      "value": "3306",
+      "required": false
+    },
+    {
+      "key": "DATABASE_NAME",
+      "description": "Database MySQL name, if you're using MySQL",
+      "value": "",
+      "required": false
+    },
+    {
+      "key": "DATABASE_PASS",
+      "description": "Database MySQL password, if you're using MySQL",
+      "value": "",
+      "required": false
+    },
+    {
+      "key": "DATABASE_USER",
+      "description": "Database MySQL user, if you're using MySQL",
+      "value": "",
+      "required": false
+    },
+    {
+      "key": "DATABASE_SSL_CA",
+      "description": "Database MySQL ssl ca, if you're using SkySQL",
+      "value": "",
+      "required": false
+    },
+    {
+      "key": "DATABASE_SSL_CERT",
+      "description": "Database MySQL ssl cert, if you're using SkySQL",
+      "value": "",
+      "required": false
+    },
+    {
+      "key": "JWT_AUDIENCE",
+      "description": "JWT audience",
+      "value": "poskita.buatan.id",
+      "required": false
+    },
+    {
+      "key": "JWT_EXPIRES_IN",
+      "description": "JWT expires in",
+      "value": "1d",
+      "required": true
+    },
+    {
+      "key": "JWT_ISSUER",
+      "description": "JWT issuer",
+      "value": "buatan.id",
+      "required": false
+    },
+    {
+      "key": "JWT_SECRET",
+      "description": "JWT secret, don't share this with anyone",
+      "value": "",
+      "required": true
+    },
+    {
+      "key": "NODE_ENV",
+      "description": "Node environment",
+      "value": "development",
+      "required": false
+    },
+    {
+      "key": "PORT",
+      "description": "Port to run the server",
+      "value": "3000",
+      "required": false
+    },
+    {
+      "key": "SMTP_HOST",
+      "description": "SMTP host",
+      "value": "localhost",
+      "required": true
+    },
+    {
+      "key": "SMTP_PORT",
+      "description": "SMTP port",
+      "value": "587",
+      "required": false
+    },
+    {
+      "key": "SMTP_USER",
+      "description": "SMTP user or email for authentication",
+      "value": "noreply@buatan.id",
+      "required": true
+    },
+    {
+      "key": "SMTP_PASS",
+      "description": "SMTP password for authentication",
+      "value": "",
+      "required": true
+    }
+  ]
+}

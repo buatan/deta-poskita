@@ -1,0 +1,23 @@
+# Deploy this repository to Deta using ubuntu-latest when a push is made to branch main or a pull request is made to branch main
+# The Deta deployment is triggered by the Deta CLI `curl -fsSL https://get.deta.dev/cli.sh | sh`
+
+name: Deta Deployment
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v2
+
+          - name: Installing Deta CLI
+            run: curl -fsSL https://get.deta.dev/cli.sh | sh
+
