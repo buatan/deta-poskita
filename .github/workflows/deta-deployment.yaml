@@ -30,7 +30,7 @@ jobs:
 #            run: npm test
 
           - name: Installing Deta CLI
-            run: curl -fsSL https://get.deta.dev/cli.sh | sh
+            run: curl -fsSL https://get.deta.dev/cli.sh | sh &&
 
           - name: Deploying to Deta
-            run: export DETA_ACCESS_TOKEN=${{ secrets.DETA_ACCESS_TOKEN }} && deta deploy
+            run: export DETA_ACCESS_TOKEN=${{ secrets.DETA_ACCESS_TOKEN }} && /home/runner/.deta/bin/deta deploy
