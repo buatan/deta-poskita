@@ -5,29 +5,34 @@ class UsersRepository {
     this.usersRepository = db.Base("users");
   }
 
-  async getUserById(id) {
-    const user = await this.usersRepository.get(id);
-    return user;
+  buildUser(user) {
+    user.id = user.key;
+    delete user.key;
+    return user
   }
 
-  async getUserByIdentifier(identifier) {
-    const [user] = await this.usersRepository.fetch([{email: identifier}, {username: identifier}]);
-    return user;
+  async getUserById(id) {
+    const user = await this.usersRepository.get(id);
+    return this.buildUser(user);
+  }
+
+  async getUserByIdentifier(identifier, email) {
+    const [user] = await this.usersRepository.fetch([{email: email || identifier}, {username: identifier}]);
+    return this.buildUser(user);
   }
 
   async createUser(user) {
-    const newUser = await this.usersRepository.put(user);
-    return newUser;
+    const result = await this.usersRepository.put(user);
+    return this.buildUser(result);
   }
 
   async updateUser(id, user) {
     const updatedUser = await this.usersRepository.update(user, id);
-    return updatedUser;
+    return this.buildUser(updatedUser);
   }
 
   async deleteUser(id) {
-    const deletedUser = await this.usersRepository.delete(id);
-    return deletedUser;
+    await this.usersRepository.delete(id);
   }
 }
 

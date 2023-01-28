@@ -8,17 +8,23 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "mocha"
+    "test": "mocha tests/**/*.spec.js --exit"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "deta": "^1.1.0",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "joi": "^17.7.0"
+    "joi": "^17.7.0",
+    "jsonwebtoken": "^9.0.0",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.12",
     "mocha": "^10.2.0",
-    "chai": "^4.3.7"
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0"
   },
   "license": "MIT"
 }

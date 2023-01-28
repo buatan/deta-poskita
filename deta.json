@@ -46,12 +46,6 @@
       "required": false
     },
     {
-      "key": "DATABASE_SSL_CERT",
-      "description": "Database MySQL ssl cert, if you're using SkySQL",
-      "value": "",
-      "required": false
-    },
-    {
       "key": "JWT_AUDIENCE",
       "description": "JWT audience",
       "value": "poskita.buatan.id",

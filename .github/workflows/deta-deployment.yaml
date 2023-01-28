@@ -18,6 +18,21 @@ jobs:
           - name: Checkout
             uses: actions/checkout@v2
 
+          - name: Setup NodeJs
+            uses: actions/setup-node@v2
+            with:
+              node-version: '14'
+
+          - name: Installing dependencies
+            run: npm install
+
+          - name: Running tests
+            run: npm test
+
           - name: Installing Deta CLI
             run: curl -fsSL https://get.deta.dev/cli.sh | sh
 
+          - name: Deploying to Deta
+            run: deta deploy
+            with:
+              DETA_ACCESS_TOKEN: ${{ secrets.DETA_ACCESS_TOKEN }}

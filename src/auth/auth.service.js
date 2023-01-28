@@ -1,19 +1,32 @@
 const UsersService = require("../users/users.service");
+const {NotFoundException, UnauthorizedException} = require("../utils/helpers/http-error");
+const security = require("../utils/helpers/security");
+const jwtHelper = require("../utils/helpers/jwt");
 
 class AuthService {
   constructor() {
     this.usersService = new UsersService();
   }
 
+  loginResponse(user) {
+    return {
+      accessToken: jwtHelper.sign({sub: user.key}),
+      user,
+    }
+  }
+
   async login(loginDto) {
     const user = await this.usersService.getUserByIdentifier(loginDto.identifier);
-    if (!user) {
-      throw new Error("User not found");
+    if (!user || !(await security.compare(loginDto.password, user.password))) {
+      throw new UnauthorizedException('Please check your login credentials');
     }
-    if (user.password !== loginDto.password) {
-      throw new Error("Invalid password");
-    }
-    return user;
+    this.usersService.sanitizeUser(user);
+    return this.loginResponse(user);
+  }
+
+  async register(registerDto) {
+    const user = await this.usersService.createUser(registerDto);
+    return this.loginResponse(user);
   }
 }
 
