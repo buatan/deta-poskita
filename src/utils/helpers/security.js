@@ -9,6 +9,7 @@ async function compare(text, encryptedText) {
 }
 
 async function genToken() {
+  const btoa = (value) => Buffer.from(value).toString('base64');
   return encodeURIComponent(btoa(await bcrypt.genSalt(10)));
 }
 

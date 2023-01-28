@@ -6,6 +6,7 @@ class UsersRepository {
   }
 
   buildUser(user) {
+    if (!user) return user;
     user.id = user.key;
     delete user.key;
     return user
@@ -17,7 +18,7 @@ class UsersRepository {
   }
 
   async getUserByIdentifier(identifier, email) {
-    const [user] = await this.usersRepository.fetch([{email: email || identifier}, {username: identifier}]);
+    const {items: [user]} = await this.usersRepository.fetch([{email: email || identifier}, {username: identifier}]);
     return this.buildUser(user);
   }
 

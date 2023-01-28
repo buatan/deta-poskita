@@ -2,6 +2,7 @@ const UsersService = require("../users/users.service");
 const {NotFoundException, UnauthorizedException} = require("../utils/helpers/http-error");
 const security = require("../utils/helpers/security");
 const jwtHelper = require("../utils/helpers/jwt");
+const {Data} = require("../utils/helpers/wrapper");
 
 class AuthService {
   constructor() {
@@ -9,10 +10,10 @@ class AuthService {
   }
 
   loginResponse(user) {
-    return {
+    return new Data({
       accessToken: jwtHelper.sign({sub: user.key}),
       user,
-    }
+    })
   }
 
   async login(loginDto) {

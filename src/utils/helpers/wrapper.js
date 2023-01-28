@@ -1,21 +1,22 @@
 class Data {
-  constructor(data = {}, error, meta) {
+  constructor(data = {}, meta, message = 'OK', code = 200) {
     this.data = data;
     this.meta = meta;
-    this.error = error;
+    this.message = message;
+    this.code = code;
   }
 
   getCode() {
-    return 200;
+    return this.code;
   }
 
   getResponse() {
     return {
       success: true,
-      code: 200,
+      code: this.code,
       data: this.data,
+      message: this.message,
       meta: this.meta,
-      error: this.error,
     };
   }
 }

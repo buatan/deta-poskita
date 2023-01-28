@@ -14,7 +14,8 @@ class UsersService {
   }
 
   async getUserByIdentifier(identifier, email) {
-    return this.usersRepository.getUserByIdentifier(identifier, email || identifier);
+    const user = await this.usersRepository.getUserByIdentifier(identifier, email || identifier);
+    return user;
   }
 
   async createUser(createUserDto) {

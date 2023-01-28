@@ -10,7 +10,7 @@ const username = Joi.string().alphanum().min(6).required();
 const email = Joi.string().email().required();
 
 // password is strong password and special characters are optional and can't be empty
-const password = Joi.string().pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/).required();
+const password = Joi.string().pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/).required();
 
 // phone number must be a valid indonesian phone number and is optional and only numbers are allowed
 const phone = Joi.string().pattern(/^(^\+62\s?|^0)(\d{3,4}-?){2}\d{3,4}$/).optional();
